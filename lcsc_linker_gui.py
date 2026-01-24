@@ -301,7 +301,12 @@ class MainFrame(wx.Frame):
         self.save_btn = wx.Button(panel, label="Save")
         self.save_btn.Bind(wx.EVT_BUTTON, self._on_save)
         self.save_btn.Enable(False)
-        btn_sizer.Add(self.save_btn, 0)
+        btn_sizer.Add(self.save_btn, 0, wx.RIGHT, 5)
+
+        self.open_urls_btn = wx.Button(panel, label="Open All URLs")
+        self.open_urls_btn.Bind(wx.EVT_BUTTON, self._on_open_all_urls)
+        self.open_urls_btn.Enable(False)
+        btn_sizer.Add(self.open_urls_btn, 0)
 
         main_sizer.Add(btn_sizer, 0, wx.ALIGN_RIGHT | wx.ALL, 10)
 
@@ -368,6 +373,9 @@ class MainFrame(wx.Frame):
             self.process_empty_btn.Enable(len(self.components) > 0)
             self.save_btn.Enable(False)
 
+            linked_count = sum(1 for c in self.components if c.lcsc)
+            self.open_urls_btn.Enable(linked_count > 0)
+
             empty_count = sum(1 for c in self.components if not c.lcsc)
             self.status_label.SetLabel(
                 f"Loaded {len(self.components)} components. "
@@ -406,6 +414,8 @@ class MainFrame(wx.Frame):
             self.parser.update_component(comp, dlg.selected_lcsc_id, dlg.selected_url)
             self._update_component_list()
             self.save_btn.Enable(True)
+            linked_count = sum(1 for c in self.components if c.lcsc)
+            self.open_urls_btn.Enable(linked_count > 0)
             self.SetStatusText(f"Updated {comp.reference} with {dlg.selected_lcsc_id}")
 
         dlg.Destroy()
@@ -446,6 +456,8 @@ class MainFrame(wx.Frame):
         self._update_component_list()
         if updated > 0:
             self.save_btn.Enable(True)
+            linked_count = sum(1 for c in self.components if c.lcsc)
+            self.open_urls_btn.Enable(linked_count > 0)
 
         wx.MessageBox(
             f"Processing complete.\n\nUpdated: {updated}\nSkipped: {skipped}",
@@ -484,6 +496,29 @@ class MainFrame(wx.Frame):
                     self.SetStatusText(f"Saved: {dialog.GetPath()}")
                 except Exception as e:
                     wx.MessageBox(f"Error saving file:\n{e}", "Error", wx.OK | wx.ICON_ERROR)
+
+    def _on_open_all_urls(self, event):
+        """Open all LCSC URLs in the default browser."""
+        urls = []
+        for comp in self.components:
+            if comp.lcsc:
+                url = comp.url if comp.url else f"https://www.lcsc.com/product-detail/{comp.lcsc}.html"
+                urls.append(url)
+
+        if not urls:
+            wx.MessageBox("No components with LCSC IDs found.", "Info", wx.OK | wx.ICON_INFORMATION)
+            return
+
+        result = wx.MessageBox(
+            f"Open {len(urls)} URLs in your browser?",
+            "Confirm",
+            wx.YES_NO | wx.ICON_QUESTION
+        )
+
+        if result == wx.YES:
+            for url in urls:
+                webbrowser.open(url)
+            self.SetStatusText(f"Opened {len(urls)} URLs")
 
     def _on_exit(self, event):
         """Exit the application."""
