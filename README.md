@@ -10,6 +10,7 @@ KiCadの回路図ファイル（.kicad_sch）に対して、LCSCの部品番号�
 - 部品のValue（値）とFootprint（パッケージ）からLCSC/JLCPCB部品を検索
 - 対話的に候補から選択
 - LCSCフィールドとURLフィールドを自動記入
+- **GUIアプリケーション**と**CLIツール**の両方に対応
 
 ## 動作環境
 
@@ -32,13 +33,36 @@ pip install -r requirements.txt
 
 ## 使い方
 
+### GUIアプリケーション（推奨）
+
 ```bash
-# venvを有効化してから実行
+source venv/bin/activate
+python lcsc_linker_gui.py
+```
+
+#### GUI操作方法
+
+1. **Browse...** または **File > Open** で .kicad_sch ファイルを選択
+2. 部品一覧が表示される
+3. 処理方法を選択:
+   - **Process All Components** - 全部品を順次処理
+   - **Process Empty Only** - LCSC未設定の部品のみ処理
+   - 部品をダブルクリック - 個別に処理
+4. 部品ダイアログで:
+   - 検索結果から選択
+   - カスタム検索クエリで再検索
+   - 手動でLCSC IDを入力（例: C123456）
+   - 検索結果をダブルクリックでLCSCページを開く
+5. **Save** で保存
+
+### CLIツール
+
+```bash
 source venv/bin/activate
 python lcsc_linker.py path/to/schematic.kicad_sch
 ```
 
-### オプション
+#### CLIオプション
 
 | オプション | 説明 |
 |-----------|------|
@@ -46,7 +70,7 @@ python lcsc_linker.py path/to/schematic.kicad_sch
 | `--overwrite` | 既存のLCSCフィールドを上書き |
 | `--dry-run` | 変更を保存せずに動作確認 |
 
-### 対話モード
+#### CLI対話モード
 
 各部品に対して検索結果が表示され、以下の操作が可能です：
 
@@ -76,7 +100,7 @@ python lcsc_linker.py path/to/schematic.kicad_sch
 
 ## トラブルシューティング
 
-### `ModuleNotFoundError: No module named 'requests'`
+### `ModuleNotFoundError: No module named 'requests'` または `No module named 'wx'`
 
 venvが有効化されていません。以下を実行してください：
 
@@ -91,17 +115,18 @@ APIのレート制限に達しました。数分待ってから再実行して�
 
 ### 検索結果が0件
 
-- 検索クエリが特殊文字を含む場合、`[s]`で別のクエリを試してください
-- `[m]`でLCSC IDを直接入力することもできます
+- 検索クエリが特殊文字を含む場合、別のクエリを試してください
+- LCSC IDを直接入力することもできます
 
 ## ファイル構成
 
 ```
-lcsc_linker.py      # メインCLI
+lcsc_linker.py      # CLI版メインスクリプト
+lcsc_linker_gui.py  # GUI版アプリケーション（wxPython）
 kicad_parser.py     # KiCad .kicad_sch パーサー
 lcsc_api.py         # JLCPCB API クライアント
 fix_lcsc.py         # バッチ処理用スクリプト
-requirements.txt    # 依存関係（requests）
+requirements.txt    # 依存関係（requests, wxPython）
 ```
 
 ## ライセンス
