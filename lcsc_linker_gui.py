@@ -472,7 +472,16 @@ class MainFrame(wx.Frame):
                 self.parser.save()
                 self.save_btn.Enable(False)
                 self.SetStatusText(f"Saved: {self.current_file}")
-                wx.MessageBox("Schematic saved successfully.", "Saved", wx.OK | wx.ICON_INFORMATION)
+                wx.MessageBox(
+                    "回路図を保存しました。\n\n"
+                    "重要: KiCadで同じファイルを開いている場合は、\n"
+                    "KiCadで「ファイル → 元に戻す」または回路図を\n"
+                    "開き直してください。\n\n"
+                    "KiCadでそのまま上書き保存すると、\n"
+                    "この変更が失われます。",
+                    "保存完了 - KiCadを再読み込みしてください",
+                    wx.OK | wx.ICON_WARNING
+                )
             except Exception as e:
                 wx.MessageBox(f"Error saving file:\n{e}", "Error", wx.OK | wx.ICON_ERROR)
 
@@ -494,6 +503,16 @@ class MainFrame(wx.Frame):
                     self.file_ctrl.SetValue(dialog.GetPath())
                     self.save_btn.Enable(False)
                     self.SetStatusText(f"Saved: {dialog.GetPath()}")
+                    wx.MessageBox(
+                        "回路図を保存しました。\n\n"
+                        "重要: KiCadで同じファイルを開いている場合は、\n"
+                        "KiCadで「ファイル → 元に戻す」または回路図を\n"
+                        "開き直してください。\n\n"
+                        "KiCadでそのまま上書き保存すると、\n"
+                        "この変更が失われます。",
+                        "保存完了 - KiCadを再読み込みしてください",
+                        wx.OK | wx.ICON_WARNING
+                    )
                 except Exception as e:
                     wx.MessageBox(f"Error saving file:\n{e}", "Error", wx.OK | wx.ICON_ERROR)
 
