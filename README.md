@@ -20,7 +20,7 @@ KiCadの回路図ファイル（.kicad_sch）に対して、LCSCの部品番号�
 ## インストール
 
 ```bash
-git clone https://github.com/yourname/lcsc-linker.git
+git clone https://github.com/necobit/lcsc-linker.git
 cd lcsc-linker
 
 # venv作成（必須）
