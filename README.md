@@ -98,6 +98,37 @@ python lcsc_linker.py path/to/schematic.kicad_sch
 
 公式APIを利用したい場合は [LCSC Open API](https://www.lcsc.com/docs/openapi/index.html) または [JLCPCB API](https://api.jlcpcb.com/) に申請してください。
 
+## Tips: 検索キーワードの仕組み
+
+LCSC部品検索のキーワードは、回路図の **Value**（値）と **Footprint**（フットプリント）から自動生成されます。
+
+### 検索キーワードの構成
+
+```
+検索キーワード = Value + パッケージサイズ
+```
+
+例:
+| Value | Footprint | 検索キーワード |
+|-------|-----------|---------------|
+| `100nF` | `Capacitor_SMD:C_0402_1005Metric` | `100nF 0402` |
+| `10k` | `Resistor_SMD:R_0603_1608Metric` | `10k 0603` |
+| `ATmega328P` | `Package_QFP:TQFP-32_7x7mm_P0.8mm` | `ATmega328P TQFP-32` |
+
+### パッケージサイズの抽出ルール
+
+Footprintから以下のパターンでパッケージサイズを抽出します：
+
+1. **インペリアルサイズ**: `0402`, `0603`, `0805`, `1206` など
+2. **メトリック→インペリアル変換**: `1005Metric` → `0402`, `1608Metric` → `0603`
+3. **パッケージ名**: `SOT-23`, `SOIC-8`, `QFP-32`, `TSSOP-16` など
+
+### 検索精度を上げるコツ
+
+- **Valueを具体的に**: `100nF` や `10uF 25V` のように容量・耐圧を明記
+- **フットプリントを正確に**: KiCadの標準ライブラリのフットプリントを使用すると自動抽出が効きやすい
+- **検索がヒットしない場合**: カスタム検索で `0.1uF` → `100nF` のように表記を変えて再検索
+
 ## トラブルシューティング
 
 ### `ModuleNotFoundError: No module named 'requests'` または `No module named 'wx'`
