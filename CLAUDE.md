@@ -27,7 +27,8 @@ python lcsc_linker.py path/to/project.kicad_sch
 ## アーキテクチャ
 
 ```
-lcsc_linker.py      # メインエントリーポイント・CLI・対話的選択UI
+lcsc_linker.py      # CLIエントリーポイント・対話的選択UI
+lcsc_linker_gui.py  # wxPython GUIアプリケーション
 kicad_parser.py     # .kicad_sch S式パーサー/ライター
 lcsc_api.py         # LCSC検索APIクライアント（JLCPCB非公式API使用）
 fix_lcsc.py         # 手動LCSC情報注入スクリプト（バッチ処理用）
@@ -55,7 +56,21 @@ S式（S-expression）テキスト形式。部品は以下の構造：
 - パッケージサイズ抽出: `C_0402_1005Metric` -> `0402`
 - レート制限あり（連続リクエストで403エラー）
 
-## CLIオプション
+## 実行方法
+
+### GUIアプリケーション（推奨）
+
+```bash
+python lcsc_linker_gui.py
+```
+
+- ファイル選択ダイアログで.kicad_schを開く
+- 部品一覧が表示される
+- 「Process All」または「Process Empty Only」で順次処理
+- ダブルクリックで個別部品を処理可能
+- 検索結果をダブルクリックでLCSCページを開く
+
+### CLIオプション
 
 ```bash
 python lcsc_linker.py schematic.kicad_sch           # 通常実行
