@@ -516,8 +516,11 @@ class MainFrame(wx.Frame):
         )
 
         if result == wx.YES:
-            for url in urls:
-                webbrowser.open(url)
+            for i, url in enumerate(urls):
+                if i == 0:
+                    webbrowser.open_new(url)  # First URL opens new window
+                else:
+                    webbrowser.open_new_tab(url)  # Rest open in tabs
             self.SetStatusText(f"Opened {len(urls)} URLs")
 
     def _on_exit(self, event):
